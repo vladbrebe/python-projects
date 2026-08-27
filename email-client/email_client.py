@@ -43,10 +43,10 @@ class Email:
 class Inbox:
 
     def __init__(self) -> None:
-        self.emails: list[Email] = []
+        self.emails = []
 
     # add email to 'emails'
-    def receive_email(self, email: Email) -> None:
+    def receive_email(self, email) -> None:
         self.emails.append(email)
 
     # summarises each item in 'emails' on its own line
@@ -93,7 +93,7 @@ class User:
         self.inbox = Inbox()
 
     # sends an Email to 'receiver'
-    def send_email(self, receiver: User, subject: str, body: str):
+    def send_email(self, receive, subject: str, body: str):
 
         email = Email(sender=self, receiver=receiver, subject=subject, body=body)
         receiver.inbox.receive_email(email)
