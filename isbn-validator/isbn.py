@@ -13,7 +13,8 @@ Both standards end in a check digit derived from the preceding digits:
 def calculate_check_digit_10(main_digits_list):
     # Note: You don't have to fully understand the logic in this function.
     digits_sum = 0
-    # Multiply each of the first 9 digits by its corresponding weight (10 to 2) and sum up the results
+    # Multiply each of the first 9 digits by its corresponding
+    #  weight (10 to 2) and sum up the results
     for index, digit in enumerate(main_digits_list):
         digits_sum += digit * (10 - index)
     # Find the remainder of dividing the sum by 11, then subtract it from 11
@@ -33,7 +34,8 @@ def calculate_check_digit_10(main_digits_list):
 def calculate_check_digit_13(main_digits_list):
     # Note: You don't have to fully understand the logic in this function.
     digits_sum = 0
-    # Multiply each of the first 12 digits by 1 and 3 alternately (starting with 1), and sum up the results
+    # Multiply each of the first 12 digits by 1 and 3 alternately 
+    # (starting with 1), and sum up the results
     for index, digit in enumerate(main_digits_list):
         if index % 2 == 0:
             digits_sum += digit * 1
