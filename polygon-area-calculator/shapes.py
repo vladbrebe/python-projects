@@ -32,7 +32,7 @@ class Rectangle:
         return ("*"*self.width + "\n")*self.height
 
     # returns the integer amount of copies of 'shape' can fit inside 'self'
-    def get_amount_inside(self, shape: Rectangle) -> int:
+    def get_amount_inside(self, shape) -> int:
         return (self.width//shape.width)*(self.height//shape.height)
 
     def __str__(self) -> str:
