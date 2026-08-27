@@ -8,9 +8,6 @@ from hanoi import hanoi_solver
 # three rods, and stripping the outer brackets leaves the disk numbers.
 
 
-from hanoi import hanoi_solver
-
-
 def test_one_disk():
     assert hanoi_solver(1) == "[1] [] []\n[] [] [1]"
 
