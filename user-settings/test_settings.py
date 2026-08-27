@@ -1,6 +1,6 @@
 import pytest
 
-from settings import add_setting, delete_setting, update_setting, view_settings
+from settings import add_setting, view_settings
 
 
 def make_settings():
