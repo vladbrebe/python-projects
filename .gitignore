@@ -1,26 +1,16 @@
-# Byte-compiled files
+# Python
 __pycache__/
-*.py[cod]
-*$py.class
 
-# Virtual environments
+# Virtual environment
 .venv/
 venv/
-env/
 
-# Testing and tooling caches
+# Tool caches
 .pytest_cache/
 .ruff_cache/
-.mypy_cache/
-.coverage
-htmlcov/
 
-# Editors
+# Editor
 .vscode/
-.idea/
-*.swp
 
-# Operating system
-.DS_Store
-Thumbs.db
+# Windows
 desktop.ini
