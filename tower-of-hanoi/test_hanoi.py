@@ -1,7 +1,4 @@
-import pytest
-
 from hanoi import hanoi_solver
-
 
 # hanoi_solver returns text, so these helpers read the rods back out of it.
 # Each line looks like "[3, 2, 1] [] []": splitting on "] [" separates the
