@@ -2,7 +2,6 @@ import pytest
 
 from isbn import calculate_check_digit_10, calculate_check_digit_13, validate_isbn
 
-
 # validate_isbn prints its result and returns None, so these tests use pytest's
 # built-in capsys fixture to capture what was printed.
 
