@@ -56,7 +56,6 @@ Both run automatically on every push through GitHub Actions
 ```
 python-projects/
 ├── .github/workflows/tests.yml   
-├── docs/index.html               Source of the GitHub Pages site
 ├── pyproject.toml                pytest and Ruff configuration
 ├── budget-app/
 │   ├── README.md
