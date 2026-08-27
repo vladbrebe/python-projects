@@ -21,13 +21,13 @@ Ramy's inbox:
 1. [Unread] From: Tory | Subject: Hello | Time: 2026-08-27 11:42
 2. [Unread] From: Tory | Subject: Lunch | Time: 2026-08-27 11:42
 
---- Email ---
+"--- Email ---
 From: Tory
 To: Ramy
 Subject: Hello
 Received: 2026-08-27 11:42
 Body: Hi Ramy, just saying hello!
-------------
+------------"
 
 Ramy's inbox after deleting email 1:
 1. [Unread] From: Tory | Subject: Lunch | Time: 2026-08-27 11:42
