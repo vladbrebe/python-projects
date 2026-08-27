@@ -32,7 +32,7 @@ def delete_setting(dictionary, key):
     if (key in set([i.lower() for i in dictionary.keys()])):
         dictionary.pop(key)
         return(f"Setting \'{key}\' deleted successfully!")
-    return(f"Setting not found!")
+    return("Setting not found!")
 
 
 def view_settings(dictionary):
