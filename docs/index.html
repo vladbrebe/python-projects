@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Python Projects — Vlad Brebeanu</title>
+<meta name="description" content="Seven small Python projects covering object-oriented design, data structures, recursion and input validation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #111111;
+    --paper: #f4f2ec;
+    --panel: #ffffff;
+    --rule: #111111;
+    --muted: #55524b;
+    --shadow: 4px 4px 0 var(--rule);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ink: #e8e6df;
+      --paper: #14140f;
+      --panel: #1c1c16;
+      --rule: #e8e6df;
+      --muted: #9a978e;
+      --shadow: 4px 4px 0 var(--rule);
+    }
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    padding: 2rem 1.25rem 4rem;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: 62rem; margin: 0 auto; }
+
+  h1, h2, h3, .display {
+    font-family: "Silkscreen", "IBM Plex Mono", monospace;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    line-height: 1.25;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  a:focus-visible { outline: 2px solid var(--rule); outline-offset: 3px; }
+
+  /* ---------- Monitor shell ---------- */
+  .monitor {
+    border: 3px solid var(--rule);
+    background: var(--panel);
+    box-shadow: var(--shadow);
+    margin-bottom: 2.5rem;
+  }
+
+  .titlebar {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.5rem 0.75rem;
+    border-bottom: 3px solid var(--rule);
+    background: var(--ink);
+    color: var(--paper);
+    font-family: "Silkscreen", monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+  }
+
+  .titlebar .dots { display: flex; gap: 5px; margin-left: auto; }
+  .titlebar .dots span {
+    width: 10px; height: 10px;
+    border: 2px solid var(--paper);
+    display: block;
+  }
+
+  .screen { padding: 1.75rem 1.5rem; }
+
+  h1 { font-size: clamp(1.4rem, 4.5vw, 2.1rem); margin: 0 0 0.75rem; }
+
+  .lede { max-width: 46rem; margin: 0 0 1.25rem; color: var(--muted); }
+
+  .badges { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.25rem; }
+  .badge {
+    font-family: "Silkscreen", monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    border: 2px solid var(--rule);
+    padding: 0.3rem 0.55rem;
+  }
+
+  .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .button {
+    display: inline-block;
+    font-family: "Silkscreen", monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    border: 3px solid var(--rule);
+    padding: 0.55rem 0.9rem;
+    background: var(--panel);
+    box-shadow: 3px 3px 0 var(--rule);
+    transition: transform 80ms linear, box-shadow 80ms linear;
+  }
+  .button:hover { transform: translate(3px, 3px); box-shadow: 0 0 0 var(--rule); }
+  .button.primary { background: var(--ink); color: var(--paper); }
+
+  /* ---------- Section headings ---------- */
+  h2 {
+    font-size: 13px;
+    text-transform: uppercase;
+    margin: 0 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid var(--rule);
+  }
+
+  /* ---------- Project grid ---------- */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+    gap: 1.1rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    border: 3px solid var(--rule);
+    background: var(--panel);
+    box-shadow: var(--shadow);
+    padding: 1.1rem;
+    height: 100%;
+    transition: transform 80ms linear, box-shadow 80ms linear;
+  }
+  .card:hover { transform: translate(4px, 4px); box-shadow: 0 0 0 var(--rule); }
+
+  .card h3 { font-size: 13px; text-transform: uppercase; margin: 0 0 0.5rem; }
+  .card p { margin: 0 0 0.9rem; color: var(--muted); font-size: 13.5px; }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: auto; }
+  .tag {
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    border: 2px solid var(--rule);
+    padding: 0.15rem 0.4rem;
+  }
+
+  /* ---------- Terminal block ---------- */
+  .terminal {
+    border: 3px solid var(--rule);
+    background: var(--ink);
+    color: var(--paper);
+    padding: 1rem 1.1rem;
+    overflow-x: auto;
+    box-shadow: var(--shadow);
+  }
+  .terminal pre { margin: 0; font-size: 13px; line-height: 1.55; }
+  .terminal .prompt { opacity: 0.6; }
+
+  section { margin-bottom: 2.5rem; }
+
+  footer {
+    border-top: 3px solid var(--rule);
+    padding-top: 1rem;
+    font-size: 12px;
+    color: var(--muted);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.5rem;
+    justify-content: space-between;
+  }
+  footer a { text-decoration: underline; text-underline-offset: 3px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="monitor">
+    <div class="titlebar">
+      <span>python-projects</span>
+      <span class="dots"><span></span><span></span><span></span></span>
+    </div>
+    <div class="screen">
+      <h1>Python Projects</h1>
+      <p class="lede">
+        Seven small, self-contained programs covering object-oriented design,
+        data structures, recursion and input validation. No third-party
+        dependencies, a README per project, and a test suite that runs on every
+        push.
+      </p>
+      <div class="badges">
+        <span class="badge">7 projects</span>
+        <span class="badge">72 tests</span>
+        <span class="badge">Python 3.10+</span>
+        <span class="badge">MIT licence</span>
+      </div>
+      <div class="actions">
+        <a class="button primary" href="https://github.com/YOUR-USERNAME/python-projects">View on GitHub</a>
+        <a class="button" href="https://github.com/YOUR-USERNAME/python-projects/actions">Test results</a>
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <h2>The projects</h2>
+    <ul class="grid">
+
+      <li><a class="card" href="https://github.com/YOUR-USERNAME/python-projects/tree/main/budget-app">
+        <h3>Budget App</h3>
+        <p>Category ledgers that refuse to overdraw, transfers between categories, and a text-mode bar chart of spending shares.</p>
+        <div class="tags"><span class="tag">OOP</span><span class="tag">Composition</span><span class="tag">Text rendering</span></div>
+      </a></li>
+
+      <li><a class="card" href="https://github.com/YOUR-USERNAME/python-projects/tree/main/email-client">
+        <h3>Email Client</h3>
+        <p>A three-class domain model — User, Inbox, Email — where inbox operations raise exceptions instead of printing, so they can be tested.</p>
+        <div class="tags"><span class="tag">OOP</span><span class="tag">Domain model</span><span class="tag">Exceptions</span></div>
+      </a></li>
+
+      <li><a class="card" href="https://github.com/YOUR-USERNAME/python-projects/tree/main/hash-table">
+        <h3>Hash Table</h3>
+        <p>Built from scratch with separate chaining. The hash sums character codes, so anagrams collide — and the table handles it correctly.</p>
+        <div class="tags"><span class="tag">Data structures</span><span class="tag">Collisions</span><span class="tag">Dunder methods</span></div>
+      </a></li>
+
+      <li><a class="card" href="https://github.com/YOUR-USERNAME/python-projects/tree/main/isbn-validator">
+        <h3>ISBN Validator</h3>
+        <p>Recomputes ISBN-10 and ISBN-13 check digits from the weighted digit sums, with every input failure given a named exception.</p>
+        <div class="tags"><span class="tag">Arithmetic</span><span class="tag">Validation</span><span class="tag">Error handling</span></div>
+      </a></li>
+
+      <li><a class="card" href="https://github.com/YOUR-USERNAME/python-projects/tree/main/polygon-area-calculator">
+        <h3>Polygon Area Calculator</h3>
+        <p>Square inherits from Rectangle and overrides both setters, so a square can never be silently turned into a non-square.</p>
+        <div class="tags"><span class="tag">Inheritance</span><span class="tag">Invariants</span><span class="tag">Liskov</span></div>
+      </a></li>
+
+      <li><a class="card" href="https://github.com/YOUR-USERNAME/python-projects/tree/main/tower-of-hanoi">
+        <h3>Tower of Hanoi</h3>
+        <p>An iterative solution to the textbook recursion problem, using the parity rule for the smallest disk. Optimal in 2ⁿ−1 moves.</p>
+        <div class="tags"><span class="tag">Algorithms</span><span class="tag">Iteration</span><span class="tag">Property tests</span></div>
+      </a></li>
+
+      <li><a class="card" href="https://github.com/YOUR-USERNAME/python-projects/tree/main/user-settings">
+        <h3>User Settings</h3>
+        <p>A case-insensitive key-value store where every operation returns its message rather than printing it, which is what makes it testable.</p>
+        <div class="tags"><span class="tag">Dictionaries</span><span class="tag">Normalisation</span><span class="tag">Testability</span></div>
+      </a></li>
+
+    </ul>
+  </section>
+
+  <section>
+    <h2>Run them yourself</h2>
+    <div class="terminal">
+<pre><span class="prompt">$</span> git clone https://github.com/YOUR-USERNAME/python-projects.git
+<span class="prompt">$</span> cd python-projects
+<span class="prompt">$</span> python budget-app/budget.py
+
+<span class="prompt">$</span> python -m pip install pytest
+<span class="prompt">$</span> pytest
+72 passed</pre>
+    </div>
+  </section>
+
+  <footer>
+    <span>Vlad Brebeanu &middot; MIT licence</span>
+    <span><a href="https://github.com/YOUR-USERNAME/python-projects">Source on GitHub</a></span>
+  </footer>
+
+</div>
+</body>
+</html>

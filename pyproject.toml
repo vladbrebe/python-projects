@@ -1,0 +1,30 @@
+[tool.pytest.ini_options]
+testpaths = [
+    "budget-app",
+    "email-client",
+    "hash-table",
+    "isbn-validator",
+    "polygon-area-calculator",
+    "tower-of-hanoi",
+    "user-settings",
+]
+python_files = ["test_*.py"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.ruff.lint.isort]
+known-first-party = [
+    "budget",
+    "email_client",
+    "hanoi",
+    "hash_table",
+    "isbn",
+    "settings",
+    "shapes",
+]
