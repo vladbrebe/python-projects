@@ -94,7 +94,7 @@ class User:
         self.inbox = Inbox()
 
     # sends an Email to 'receiver'
-    def send_email(self, receive, subject: str, body: str):
+    def send_email(self, receiver, subject: str, body: str):
 
         email = Email(sender=self, receiver=receiver, subject=subject, body=body)
         receiver.inbox.receive_email(email)
