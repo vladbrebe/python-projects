@@ -51,7 +51,8 @@ def hanoi_solver(n):
             a = (smallest_rod + 1) % 3 #right
             b = (smallest_rod - 1) % 3 #left
 
-            # On even turns, first check if you can move a piece which isn't the smallest to an empty spot
+            # On even turns, first check if you can move a piece which
+            # isn't the smallest to an empty spot
             if not rods[a]:
                 move(b, a)
             elif not rods[b]:
