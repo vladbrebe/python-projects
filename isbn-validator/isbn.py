@@ -81,8 +81,6 @@ def main():
     except ValueError:
         print("Length must be a number.")
         return
-    except: 
-        main()
 
     try:
         if length == 10 or length == 13:
