@@ -6,8 +6,8 @@
 
 A collection of small, self-contained Python programs covering object-oriented
 design, data structures, recursion and input validation. This project
-follows the freeCodeCamp "Python Certification" ciricullum. Every project runs
-ona standard Python installation with no third-party dependencies, and every
+follows the freeCodeCamp "Python Certification" curriculum. Every project runs
+on a standard Python installation with no third-party dependencies, and every
 project is covered by tests.
 
 **Live overview:** <https://vladbrebe.github.io/python-projects/>
