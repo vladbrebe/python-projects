@@ -76,7 +76,7 @@ def create_spend_chart(categories: list[Category]) -> str:
     # example row: 90 | o  o  
     for level in range(100, -1, -10):
         row = f"\n{level:>3}| "
-        for name, amount in categories_total:
+        for _name, amount in categories_total:
             if amount/total > level/100:
                 row += "o  "
             else:
