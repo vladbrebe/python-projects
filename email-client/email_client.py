@@ -36,7 +36,8 @@ class Email:
 
     def __str__(self) -> str:
         status = 'Read' if self.read else 'Unread'
-        return f"[{status}] From: {self.sender.name} | Subject: {self.subject} | Time: {self.timestamp.strftime('%Y-%m-%d %H:%M')}"
+        time = self.timestamp.strftime('%Y-%m-%d %H:%M')
+        return f"[{status}] From: {self.sender.name} | Subject: {self.subject} | Time: {time}"
 
 
 
